@@ -14,7 +14,7 @@ export default function About() {
 
   const collaborators = [
     { name: 'FSMK', fullName: 'Free Software Movement Karnataka' },
-    { name: 'Ubucon India', fullName: 'Ubuntu Conference India' },
+    { name: 'Ubuntu India', fullName: 'Ubuntu India' },
   ];
 
   // Duplicate for seamless loop

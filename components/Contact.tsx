@@ -30,31 +30,31 @@ export default function Contact() {
     {
       name: 'GitHub',
       handle: '@slug-community',
-      url: 'https://github.com/slug',
+      url: 'slug.org',
       icon: GithubIcon,
     },
     {
       name: 'LinkedIn',
       handle: '@sapthagiri-linux-user-group',
-      url: 'https://linkedin.com/company/slug',
+      url: 'https://www.linkedin.com/company/sapthagiri-libre-software-users-group/',
       icon: LinkedinIcon,
     },
     {
       name: 'Instagram',
       handle: '@slug_community',
-      url: 'https://instagram.com/slug',
+      url: 'https://www.instagram.com/slug_snpsu?igsh=MnhjNnVodTFpdGNn',
       icon: InstagramIcon,
     },
     {
-      name: 'Discord',
+      name: 'Telegram',
       handle: 'SLUG Community Server',
-      url: 'https://discord.gg/slug',
+      url: 'https://t.me/slugsnpsug',
       icon: MessageCircle,
     },
     {
-      name: 'Email',
-      handle: 'hello@slug.org',
-      url: 'mailto:hello@slug.org',
+      name: 'mastodon',
+      handle: 'mastodon@slug.org',
+      url: 'https://mastodon.social/@slug_snpsu',
       icon: Mail,
     },
   ];
@@ -62,23 +62,27 @@ export default function Contact() {
   const coreContacts = [
     {
       role: 'Organising Lead',
-      name: 'Aditya Kulkarni',
-      email: 'aditya@slug.org',
+      name: 'Niharika B',
+      github:'niharika-b',
+      email: 'niharika@slug.org',
     },
     {
       role: 'Tech Lead',
-      name: 'Meera Iyer',
-      email: 'meera@slug.org',
+      name: 'Kishan R',
+      github:'kishan-r',
+      email: 'kishan@slug.org',
     },
     {
       role: 'Design Lead',
-      name: 'Vikram Desai',
-      email: 'vikram@slug.org',
+      name: 'Nireeksha A P',
+      github:'nireekshaap07',
+      email: 'nireeksha@slug.org',
     },
     {
       role: 'PR / Media Lead',
-      name: 'Ishita Malhotra',
-      email: 'ishita@slug.org',
+      name: 'Nishanth K M',
+      github:'nishanth-k-m',
+      email: 'nishanth@slug.org',
     },
   ];
 
@@ -193,7 +197,7 @@ export default function Contact() {
               </h4>
               <p className="text-sm text-teal-700 leading-relaxed">
                 We're always looking for partnerships, sponsorships, and
-                collaboration opportunities. Reach out to our organizing lead or
+                collaboration opportunities. Reach out by sending us a message on our social handles or simply
                 send us an email!
               </p>
             </motion.div>

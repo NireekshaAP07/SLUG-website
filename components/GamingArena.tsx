@@ -15,8 +15,7 @@ export default function GamingArena() {
       color: 'teal',
     },
     {
-      name: '0 A.D.',
-      description: 'Free, open-source game of ancient warfare and civilization building.',
+      name: '0 A.D.',      description: 'Free, open-source game of ancient warfare and civilization building.',
       icon: '⚔️',
       color: 'yellow',
     },

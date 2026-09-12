@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Mail } from 'lucide-react';
 
+
 // Custom social icons as SVG components
 const GithubIcon = ({ className = "w-4 h-4" }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -74,14 +75,14 @@ export default function CoreTeam() {
       },
     },
     {
-      name: 'Vikram Desai',
+      name: 'Nireeksha A P',
       role: 'Design Lead',
       description: 'Creating beautiful and accessible experiences for the SLUG community.',
-      photo: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400',
+      photo: '/nagisa.jpg',
       socials: {
         github: '#',
         linkedin: '#',
-        email: 'vikram@slug.org',
+        email: 'niree@slug.org',
       },
     },
     {
