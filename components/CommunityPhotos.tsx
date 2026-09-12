@@ -69,7 +69,7 @@ export default function CommunityPhotos() {
   return (
     <section className="relative bg-white py-16 overflow-hidden">
       {/* Title */}
-      <div className="text-center mb-10 px-6">
+      <div className="relative z-20 bg-white text-center mb-10 px-6 py-2">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -89,7 +89,7 @@ export default function CommunityPhotos() {
       </div>
 
       {/* Moving Photo Columns */}
-      <div className="flex gap-3 lg:gap-4 px-2">
+      <div className="relative z-0 flex gap-3 lg:gap-4 px-2">
         {/* Column 1 - Upward */}
         <PhotoColumn photos={column1Photos} direction="up" speed={35} />
         

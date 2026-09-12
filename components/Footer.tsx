@@ -80,10 +80,10 @@ export default function Footer() {
             >
               <h3 className="text-4xl font-bold mb-4">SLUG</h3>
               <p className="text-xl text-teal-400 mb-4 font-medium">
-                Learn. Build. Share.
+                Learn Open. Build Open. Grow Together.
               </p>
               <p className="text-gray-400 leading-relaxed">
-                Sapthagiri Linux User Group — A student-led, non-profit community
+                 Sapthagiri Libre-Software Users Group — A student-led, non-profit community
                 passionate about Linux and open-source technologies.
               </p>
             </motion.div>
@@ -139,7 +139,7 @@ export default function Footer() {
                 ))}
               </div>
               <div className="space-y-2 text-sm text-gray-400">
-                <p>Sapthagiri College of Engineering</p>
+                <p>Sapthagiri NPS University</p>
                 <p>Bangalore, Karnataka</p>
                 <a
                   href="mailto:hello@slug.org"
@@ -162,7 +162,7 @@ export default function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-400 text-center md:text-left">
-              © {new Date().getFullYear()} SLUG - Sapthagiri Linux User Group.
+              © {new Date().getFullYear()} SLUG - Sapthagiri Libre-Software Users Group.
               All rights reserved.
             </p>
             <div className="flex items-center gap-2 text-sm text-gray-400">

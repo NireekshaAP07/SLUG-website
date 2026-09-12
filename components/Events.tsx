@@ -105,22 +105,42 @@ export default function Events({ onEventClick }: EventsProps) {
   const pastEvents = [
     {
       id: 4,
-      name: 'SLUG Community Meetup',
-      date: 'August 10, 2026',
+      name: 'SLUG CTRL+O',
+      date: 'May 25, 2026',
       location: 'Campus Grounds',
       category: 'Community Meetup',
       image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=800',
-      description: 'Monthly community gathering to discuss projects and share knowledge.',
+      description: 'Your Voyage into the FOSSiverse SLUG CTRL+O was an introductory session designed to open the door to the world of Free and Open Source Software, GNU/Linux, and open-source communities.The session introduced students to the fundamentals of FOSS and Linux while showing how students can move from simply using technology to building and contributing to it.',
     },
     {
       id: 5,
-      name: 'Git & GitHub Workshop',
-      date: 'July 20, 2026',
+      name: 'Getting Started with LLMs & Agentic AI',
+      date: 'May 30, 2026',
       location: 'Computer Lab',
       category: 'Workshop',
       image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800',
-      description: 'Learn version control with Git and collaborative development on GitHub.',
+      description: 'In collaboration with FSMKSLUG Getting Started with LLMs & Agentic AI workshop introduced students to the rapidly evolving world of modern artificial intelligence.Led by Praveen Nathan from Free Software Movement Karnataka (FSMK), the session combined conceptual learning with practical demonstrations and interactive exploration of AI tools.',
     },
+    {
+      id: 6,
+      name: 'Context Engineering',
+      date: 'August 3, 2026',
+      location: 'Computer Lab',
+      category: 'Group Discussion',
+      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800',
+      description: 'SLUG In-Team Learning Session A focused knowledge-sharing session exploring how modern AI systems work with context, memory, external information, and tools.Led by Kishan Ravi R, the session moved beyond basic prompt engineering and explored the systems and techniques that help AI applications produce more relevant and reliable results..',
+    },
+
+    {
+      id: 7,
+      name: 'Linux Install Fest',
+      date: 'August 3, 2026',
+      location: 'Campus ',
+      category: 'Hands On',
+      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800',
+      description: 'The Linux Install Fest was a hands-on initiative by SLUG designed to help students move from learning about Linux to actually installing and exploring it on their own systems.Participants were invited to experience Linux directly on their laptops and take their first practical steps into the Linux ecosystem..',
+    },
+
   ];
 
   const currentEvents = activeTab === 'upcoming' ? upcomingEvents : activeTab === 'ongoing' ? ongoingEvents : pastEvents;

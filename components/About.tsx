@@ -52,7 +52,7 @@ export default function About() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="text-xs uppercase tracking-wider text-teal-600 font-semibold mb-4">
+            <div className="text-2xl uppercase tracking-wider text-teal-600 font-semibold mb-4">
               Who We Are
             </div>
             <h2 className="text-5xl font-bold text-gray-900 leading-tight">
@@ -69,7 +69,8 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-gray-600 leading-relaxed mb-8"
           >
-            SLUG (Sapthagiri Linux User Group) is a vibrant, student-led,
+            More Than a Club Its a Community. 
+            SLUG ( Sapthagiri Libre-Software Users Group) is a vibrant, student-led,
             non-profit technology community dedicated to fostering a culture of
             learning, collaboration, and innovation around Linux and open-source
             software. We bring together students who are passionate about
@@ -141,7 +142,7 @@ export default function About() {
                               <circle cx="4" cy="16" r="1.5" />
                             </svg>
                           </div>
-                          <span className="text-sm font-semibold text-orange-600">Ubucon India</span>
+                          <span className="text-sm font-semibold text-orange-600">Ubuntu India</span>
                         </div>
                       )}
                     </div>

@@ -35,7 +35,7 @@ export default function Contact() {
     },
     {
       name: 'LinkedIn',
-      handle: '@sapthagiri-linux-user-group',
+      handle: '@Sapthagiri Libre-Software Users Group',
       url: 'https://www.linkedin.com/company/sapthagiri-libre-software-users-group/',
       icon: LinkedinIcon,
     },

@@ -64,7 +64,7 @@ export default function Navigation({ currentPage, setCurrentPage }: NavigationPr
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
             <img
-              src="/slug-logo.png"
+              src="public/SLUGLOGO.svg"
               alt="SLUG Logo"
               className="h-12 w-auto"
             />

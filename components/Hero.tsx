@@ -11,8 +11,8 @@ export default function Hero() {
       if (heroRef.current) {
         const rect = heroRef.current.getBoundingClientRect();
         setMousePosition({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top,
+          x: e.clientX - rect.left - rect.width / 2,
+          y: e.clientY - rect.top - rect.height / 2,
         });
       }
     };
@@ -20,6 +20,14 @@ export default function Hero() {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  // Keep the illustration's movement pleasantly subtle, even on large screens.
+  const laptopOffset = Math.max(-16, Math.min(16, mousePosition.x * 0.04));
+  const laptopTilt = Math.max(-4, Math.min(4, mousePosition.x * 0.01));
+  // The card dips slightly at either end of its travel to create a pendulum arc.
+  const laptopArcY = (Math.abs(laptopOffset) / 16) ** 2 * 7;
+  const eyeOffsetX = laptopOffset * 0.25;
+  const eyeOffsetY = Math.max(-3, Math.min(3, mousePosition.y * 0.01));
 
   const scrollToEvents = () => {
     const element = document.getElementById('events');
@@ -52,7 +60,7 @@ export default function Hero() {
           <motion.div
             key={i}
             initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 0.1, scale: 1 }}
+            animate={{ opacity: 0.2, scale: 1 }}
             transition={{ delay: 0.5 + i * 0.05, duration: 0.5 }}
             className="absolute w-2 h-2 rounded-full bg-teal-600"
             style={{
@@ -88,7 +96,7 @@ export default function Hero() {
             className="mb-12"
           >
             <img
-              src="/slug-logo.png"
+              src="public/SLUGLOGO.svg"
               alt="SLUG Logo"
               className="w-80 h-auto"
             />
@@ -100,7 +108,7 @@ export default function Hero() {
             transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
             className="text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6"
           >
-            Learn. Build. Share.
+            Learn Open. Build Open. Grow Together.
           </motion.h1>
 
           <motion.p
@@ -144,12 +152,21 @@ export default function Hero() {
           {/* Laptop */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1, duration: 0.6 }}
-            style={{
-              x: (mousePosition.x - 500) * 0.01,
-              y: (mousePosition.y - 300) * 0.01,
+            animate={{
+              opacity: 1,
+              scale: 1,
+              x: laptopOffset,
+              y: laptopArcY,
+              rotate: laptopTilt,
             }}
+            transition={{
+              opacity: { delay: 1, duration: 0.6 },
+              scale: { delay: 1, duration: 0.6 },
+              x: { type: 'spring', stiffness: 120, damping: 18 },
+              y: { type: 'spring', stiffness: 120, damping: 18 },
+              rotate: { type: 'spring', stiffness: 120, damping: 18 },
+            }}
+            style={{ transformOrigin: '50% 0%' }}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-64 bg-gray-800 rounded-2xl shadow-2xl p-4 hover:scale-105 transition-transform duration-300"
             data-cursor="view"
           >
@@ -198,8 +215,8 @@ export default function Hero() {
                   r="6"
                   fill="#1a1a1a"
                   animate={{
-                    cx: 85 + (mousePosition.x - 500) * 0.015,
-                    cy: 55 + (mousePosition.y - 300) * 0.015,
+                    cx: 85 + eyeOffsetX,
+                    cy: 55 + eyeOffsetY,
                   }}
                   transition={{ type: 'spring', stiffness: 150, damping: 15 }}
                 />
@@ -212,8 +229,8 @@ export default function Hero() {
                   r="6"
                   fill="#1a1a1a"
                   animate={{
-                    cx: 115 + (mousePosition.x - 500) * 0.015,
-                    cy: 55 + (mousePosition.y - 300) * 0.015,
+                    cx: 115 + eyeOffsetX,
+                    cy: 55 + eyeOffsetY,
                   }}
                   transition={{ type: 'spring', stiffness: 150, damping: 15 }}
                 />
@@ -246,20 +263,6 @@ export default function Hero() {
             </svg>
           </motion.div>
 
-          {/* Small floating elements */}
-          {[...Array(5)].map((_, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 0.3, scale: 1 }}
-              transition={{ delay: 1.4 + i * 0.1, duration: 0.5 }}
-              className="absolute w-3 h-3 rounded-full bg-teal-400"
-              style={{
-                left: `${20 + i * 15}%`,
-                top: `${10 + i * 10}%`,
-              }}
-            />
-          ))}
         </motion.div>
       </div>
 
