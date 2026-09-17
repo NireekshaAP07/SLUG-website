@@ -1,4 +1,3 @@
-
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
@@ -79,24 +78,24 @@ export default function Volunteers() {
     <section
       id="volunteers"
       ref={ref}
-      className="py-32 px-6 bg-white relative overflow-hidden"
+      className="relative overflow-hidden bg-white py-20 px-4 sm:px-6 lg:py-32"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-12 text-center sm:mb-16"
         >
-          <h2 className="text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-5xl">
             The people who make it happen.
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-base text-gray-600 sm:text-xl">
             Our dedicated volunteers bring events to life
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {volunteers.map((volunteer, index) => (
             <motion.div
               key={volunteer.name}
@@ -107,23 +106,23 @@ export default function Volunteers() {
                   : { opacity: 0, y: 30, x: index % 2 === 0 ? -20 : 20 }
               }
               transition={{ duration: 0.6, delay: 0.1 * index }}
-              className="group bg-white rounded-2xl border border-gray-200 p-6 hover:-translate-y-2 hover:shadow-xl hover:border-teal-300 transition-all duration-300"
+              className="group rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-2 hover:border-teal-300 hover:shadow-xl sm:p-6"
             >
               <div className="flex items-start gap-4">
-                <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-gray-100 group-hover:ring-teal-200 transition-all">
+                <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-full ring-2 ring-gray-100 transition-all group-hover:ring-teal-200">
                   <ImageWithFallback
                     src={volunteer.photo}
                     alt={volunteer.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
 
                 <div className="flex-1">
-                  <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-teal-600 transition-colors">
+                  <h3 className="mb-1 font-semibold text-gray-900 transition-colors group-hover:text-teal-600">
                     {volunteer.name}
                   </h3>
-                  <p className="text-sm text-gray-600 mb-1">{volunteer.event}</p>
-                  <div className="inline-block px-3 py-1 bg-teal-50 text-teal-700 rounded-full text-xs font-medium">
+                  <p className="mb-1 text-sm text-gray-600">{volunteer.event}</p>
+                  <div className="inline-block rounded-full bg-teal-50 px-3 py-1 text-xs font-medium text-teal-700">
                     {volunteer.role}
                   </div>
                 </div>

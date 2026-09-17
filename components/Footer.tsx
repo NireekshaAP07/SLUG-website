@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { Mail, MessageCircle, Heart } from 'lucide-react';
 
@@ -69,7 +68,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-6 py-16">
         {/* Main Footer Content */}
-        <div className="grid lg:grid-cols-3 gap-12 mb-12">
+        <div className="mb-12 grid gap-10 lg:grid-cols-3 lg:gap-12">
           {/* Brand Section */}
           <div>
             <motion.div
@@ -78,11 +77,11 @@ export default function Footer() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-4xl font-bold mb-4">SLUG</h3>
-              <p className="text-xl text-teal-400 mb-4 font-medium">
+              <h3 className="mb-4 text-3xl font-bold sm:text-4xl">SLUG</h3>
+              <p className="mb-4 text-lg font-medium text-teal-400 sm:text-xl">
                 Learn Open. Build Open. Grow Together.
               </p>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="leading-relaxed text-gray-400">
                  Sapthagiri Libre-Software Users Group — A student-led, non-profit community
                 passionate about Linux and open-source technologies.
               </p>
@@ -97,7 +96,7 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-lg font-semibold mb-6 text-white">
+              <h4 className="mb-6 text-lg font-semibold text-white">
                 Quick Links
               </h4>
               <nav className="grid grid-cols-2 gap-3">
@@ -105,9 +104,9 @@ export default function Footer() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="text-gray-400 hover:text-teal-400 transition-colors text-sm group flex items-center gap-1"
+                    className="group flex items-center gap-1 text-sm text-gray-400 transition-colors hover:text-teal-400"
                   >
-                    <span className="w-0 h-0.5 bg-teal-400 group-hover:w-2 transition-all" />
+                    <span className="h-0.5 w-0 bg-teal-400 transition-all group-hover:w-2" />
                     {item.name}
                   </a>
                 ))}
@@ -123,18 +122,18 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-lg font-semibold mb-6 text-white">
+              <h4 className="mb-6 text-lg font-semibold text-white">
                 Connect With Us
               </h4>
-              <div className="flex gap-4 mb-6">
+              <div className="mb-6 flex gap-4">
                 {navigation.social.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
-                    className="w-10 h-10 rounded-full bg-gray-800 hover:bg-teal-600 flex items-center justify-center text-gray-400 hover:text-white transition-all hover:scale-110"
+                    className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-800 text-gray-400 transition-all hover:scale-110 hover:bg-teal-600 hover:text-white"
                     aria-label={item.name}
                   >
-                    <item.icon className="w-5 h-5" />
+                    <item.icon className="h-5 w-5" />
                   </a>
                 ))}
               </div>
@@ -143,7 +142,7 @@ export default function Footer() {
                 <p>Bangalore, Karnataka</p>
                 <a
                   href="mailto:hello@slug.org"
-                  className="text-teal-400 hover:text-teal-300 transition-colors"
+                  className="text-teal-400 transition-colors hover:text-teal-300"
                 >
                   hello@slug.org
                 </a>
@@ -158,16 +157,16 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="pt-8 border-t border-gray-800"
+          className="border-t border-gray-800 pt-8"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-400 text-center md:text-left">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <p className="text-center text-sm text-gray-400 md:text-left">
               © {new Date().getFullYear()} SLUG - Sapthagiri Libre-Software Users Group.
               All rights reserved.
             </p>
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <span>Made with</span>
-              <Heart className="w-4 h-4 text-teal-500 fill-teal-500" />
+              <Heart className="h-4 w-4 fill-teal-500 text-teal-500" />
               <span>by the SLUG community</span>
             </div>
           </div>
@@ -185,8 +184,8 @@ export default function Footer() {
       </div>
 
       {/* Background decorative elements */}
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-600 rounded-full blur-3xl opacity-5 -translate-x-1/2 translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-yellow-600 rounded-full blur-3xl opacity-5 translate-x-1/2 translate-y-1/2" />
+      <div className="absolute bottom-0 left-0 h-64 w-64 -translate-x-1/2 translate-y-1/2 rounded-full bg-teal-600 opacity-5 blur-3xl" />
+      <div className="absolute bottom-0 right-0 h-64 w-64 translate-x-1/2 translate-y-1/2 rounded-full bg-yellow-600 opacity-5 blur-3xl" />
     </footer>
   );
 }

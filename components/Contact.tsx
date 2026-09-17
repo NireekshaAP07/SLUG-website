@@ -1,4 +1,3 @@
-
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight, Mail, MessageCircle } from 'lucide-react';
@@ -90,24 +89,24 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="py-32 px-6 bg-gray-50 relative overflow-hidden"
+      className="relative overflow-hidden bg-gray-50 py-20 px-4 sm:px-6 lg:py-32"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="mb-12 text-center sm:mb-20"
         >
-          <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="mb-6 text-3xl font-bold text-gray-900 sm:text-5xl lg:text-6xl">
             Let's build something together.
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-base text-gray-600 sm:text-xl">
             Connect with us and join the community
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Left: Social Handles */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}

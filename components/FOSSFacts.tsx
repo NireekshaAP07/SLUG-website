@@ -1,4 +1,3 @@
-
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 
@@ -47,24 +46,24 @@ export default function FOSSFacts() {
     <section
       id="foss"
       ref={ref}
-      className="py-32 px-6 bg-gray-50 relative overflow-hidden"
+      className="relative overflow-hidden bg-gray-50 py-20 px-4 sm:px-6 lg:py-32"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="mb-12 text-center sm:mb-20"
         >
-          <h2 className="text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-5xl">
             Interesting facts about FOSS
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-base text-gray-600 sm:text-xl">
             Discover the impact of Free and Open Source Software
           </p>
         </motion.div>
 
-        <div ref={containerRef} className="space-y-32">
+        <div ref={containerRef} className="space-y-12 sm:space-y-20 lg:space-y-32">
           {facts.map((fact, index) => (
             <FactCard
               key={fact.number}
@@ -133,14 +132,14 @@ function FactCard({ fact, index, scrollProgress, isInView }: FactCardProps) {
       style={{ y }}
       className="relative"
     >
-      <div className={`grid lg:grid-cols-12 gap-8 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+      <div className={`grid gap-4 lg:grid-cols-12 lg:gap-8 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
         {/* Number */}
         <div className={`lg:col-span-2 ${index % 2 === 1 ? 'lg:col-start-11' : ''}`}>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={cardInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className={`text-8xl font-bold ${colors.number} opacity-20`}
+            className={`text-5xl font-bold opacity-20 sm:text-7xl lg:text-8xl ${colors.number}`}
           >
             {fact.number}
           </motion.div>
@@ -152,12 +151,12 @@ function FactCard({ fact, index, scrollProgress, isInView }: FactCardProps) {
             initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
             animate={cardInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className={`${colors.bg} ${colors.border} border-2 rounded-3xl p-10 lg:p-12 hover:shadow-xl hover:-translate-y-2 transition-all duration-300`}
+            className={`${colors.bg} ${colors.border} rounded-3xl border-2 p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl sm:p-8 lg:p-12`}
           >
-            <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+            <h3 className="mb-4 text-2xl font-bold leading-tight text-gray-900 sm:text-3xl lg:text-4xl">
               {fact.title}
             </h3>
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className="text-base leading-relaxed text-gray-700 sm:text-lg">
               {fact.description}
             </p>
           </motion.div>

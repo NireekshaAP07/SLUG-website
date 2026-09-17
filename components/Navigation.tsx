@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
@@ -54,60 +53,60 @@ export default function Navigation({ currentPage, setCurrentPage }: NavigationPr
             : 'bg-transparent py-6'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6">
           {/* Logo */}
           <button
             onClick={() => {
               setCurrentPage('home');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+            className="flex items-center gap-3 transition-opacity hover:opacity-80"
           >
             <img
               src="public/SLUGLOGO.svg"
               alt="SLUG Logo"
-              className="h-12 w-auto"
+              className="h-10 w-auto sm:h-12"
             />
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden items-center gap-8 lg:flex">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="relative text-sm text-gray-700 hover:text-teal-600 transition-colors group"
+                className="group relative text-sm text-gray-700 transition-colors hover:text-teal-600"
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-teal-600 transition-all duration-300 group-hover:w-full" />
               </button>
             ))}
           </div>
 
           {/* CTA Button */}
-          <button className="hidden lg:block px-6 py-2.5 bg-teal-600 text-white rounded-full hover:bg-teal-700 hover:-translate-y-0.5 transition-all duration-200 shadow-sm hover:shadow-md">
+          <button className="hidden rounded-full bg-teal-600 px-6 py-2.5 text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-teal-700 hover:shadow-md lg:block">
             Join SLUG
           </button>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2"
+            className="p-2 lg:hidden"
           >
-            <div className="w-6 h-5 flex flex-col justify-between">
+            <div className="flex h-5 w-6 flex-col justify-between">
               <span
-                className={`w-full h-0.5 bg-gray-900 transition-all ${
-                  mobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+                className={`h-0.5 w-full bg-gray-900 transition-all ${
+                  mobileMenuOpen ? 'translate-y-2 rotate-45' : ''
                 }`}
               />
               <span
-                className={`w-full h-0.5 bg-gray-900 transition-all ${
+                className={`h-0.5 w-full bg-gray-900 transition-all ${
                   mobileMenuOpen ? 'opacity-0' : ''
                 }`}
               />
               <span
-                className={`w-full h-0.5 bg-gray-900 transition-all ${
-                  mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                className={`h-0.5 w-full bg-gray-900 transition-all ${
+                  mobileMenuOpen ? '-translate-y-2 -rotate-45' : ''
                 }`}
               />
             </div>
@@ -123,10 +122,10 @@ export default function Navigation({ currentPage, setCurrentPage }: NavigationPr
           x: mobileMenuOpen ? 0 : '100%',
         }}
         transition={{ duration: 0.3 }}
-        className="lg:hidden fixed inset-0 z-40 bg-white"
+        className="fixed inset-0 z-40 bg-white lg:hidden"
         style={{ pointerEvents: mobileMenuOpen ? 'auto' : 'none' }}
       >
-        <div className="pt-24 px-6 flex flex-col gap-6">
+        <div className="flex flex-col gap-6 px-4 pt-24">
           {navItems.map((item, index) => (
             <motion.button
               key={item.id}
@@ -137,12 +136,12 @@ export default function Navigation({ currentPage, setCurrentPage }: NavigationPr
               }}
               transition={{ delay: index * 0.05 }}
               onClick={() => scrollToSection(item.id)}
-              className="text-left text-2xl font-semibold text-gray-900 hover:text-teal-600 transition-colors"
+              className="text-left text-2xl font-semibold text-gray-900 transition-colors hover:text-teal-600"
             >
               {item.label}
             </motion.button>
           ))}
-          <button className="mt-4 px-6 py-3 bg-teal-600 text-white rounded-full text-center">
+          <button className="mt-4 rounded-full bg-teal-600 px-6 py-3 text-center text-white">
             Join SLUG
           </button>
         </div>

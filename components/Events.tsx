@@ -1,4 +1,3 @@
-
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Calendar, MapPin, ArrowRight } from 'lucide-react';
@@ -156,18 +155,18 @@ export default function Events({ onEventClick }: EventsProps) {
     <section
       id="events"
       ref={ref}
-      className="py-32 px-6 bg-gray-50 relative overflow-hidden"
+      className="relative overflow-hidden bg-gray-50 py-20 px-4 sm:px-6 lg:py-32"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto max-w-7xl">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="mb-10 text-center sm:mb-12"
         >
-          <h2 className="text-5xl font-bold text-gray-900 mb-4">Events</h2>
-          <p className="text-xl text-gray-600">Learn together. Build together.</p>
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-5xl">Events</h2>
+          <p className="text-base text-gray-600 sm:text-xl">Learn together. Build together.</p>
         </motion.div>
 
         {/* Tab Selector */}
@@ -175,12 +174,12 @@ export default function Events({ onEventClick }: EventsProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center mb-16"
+          className="mb-10 flex justify-center sm:mb-16"
         >
-          <div className="inline-flex bg-white rounded-full p-1.5 shadow-sm border border-gray-200">
+          <div className="inline-flex flex-wrap justify-center gap-2 rounded-full border border-gray-200 bg-white p-1.5 shadow-sm">
             <button
               onClick={() => setActiveTab('upcoming')}
-              className={`px-8 py-2.5 rounded-full transition-all duration-300 font-medium ${
+              className={`rounded-full px-3 py-2 text-xs font-medium transition-all duration-300 sm:px-8 sm:py-2.5 sm:text-sm ${
                 activeTab === 'upcoming'
                   ? 'bg-teal-600 text-white shadow-sm'
                   : 'text-gray-600 hover:text-gray-900'
@@ -190,7 +189,7 @@ export default function Events({ onEventClick }: EventsProps) {
             </button>
             <button
               onClick={() => setActiveTab('ongoing')}
-              className={`px-8 py-2.5 rounded-full transition-all duration-300 font-medium ${
+              className={`rounded-full px-3 py-2 text-xs font-medium transition-all duration-300 sm:px-8 sm:py-2.5 sm:text-sm ${
                 activeTab === 'ongoing'
                   ? 'bg-teal-600 text-white shadow-sm'
                   : 'text-gray-600 hover:text-gray-900'
@@ -200,7 +199,7 @@ export default function Events({ onEventClick }: EventsProps) {
             </button>
             <button
               onClick={() => setActiveTab('past')}
-              className={`px-8 py-2.5 rounded-full transition-all duration-300 font-medium ${
+              className={`rounded-full px-3 py-2 text-xs font-medium transition-all duration-300 sm:px-8 sm:py-2.5 sm:text-sm ${
                 activeTab === 'past'
                   ? 'bg-teal-600 text-white shadow-sm'
                   : 'text-gray-600 hover:text-gray-900'
@@ -212,7 +211,7 @@ export default function Events({ onEventClick }: EventsProps) {
         </motion.div>
 
         {/* Events Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {currentEvents.map((event, index) => (
             <motion.div
               key={event.id}
@@ -220,7 +219,7 @@ export default function Events({ onEventClick }: EventsProps) {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
               onClick={() => onEventClick(event)}
-              className="group bg-white rounded-3xl overflow-hidden border border-gray-200 hover:border-teal-300 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-pointer"
+              className="group cursor-pointer overflow-hidden rounded-3xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-2 hover:border-teal-300 hover:shadow-xl"
               data-cursor="view"
             >
               {/* Event Image */}
@@ -228,10 +227,10 @@ export default function Events({ onEventClick }: EventsProps) {
                 <ImageWithFallback
                   src={event.image}
                   alt={event.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div
-                  className={`absolute top-4 left-4 px-4 py-1.5 rounded-full text-xs font-medium border ${
+                  className={`absolute left-4 top-4 rounded-full border px-3 py-1.5 text-[11px] font-medium sm:px-4 ${
                     categoryColors[event.category] || 'bg-gray-100 text-gray-700'
                   }`}
                 >
@@ -240,63 +239,46 @@ export default function Events({ onEventClick }: EventsProps) {
               </div>
 
               {/* Event Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors">
+              <div className="p-5 sm:p-6">
+                <h3 className="mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-teal-600">
                   {event.name}
                 </h3>
 
-                <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
-                  <Calendar className="w-4 h-4" />
+                <div className="mb-2 flex items-center gap-2 text-sm text-gray-600">
+                  <Calendar className="h-4 w-4" />
                   <span>{event.date}</span>
                 </div>
 
-                <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
-                  <MapPin className="w-4 h-4" />
+                <div className="mb-4 flex items-center gap-2 text-sm text-gray-600">
+                  <MapPin className="h-4 w-4" />
                   <span>{event.location}</span>
                 </div>
 
                 {/* Progress bar for ongoing events */}
-                {activeTab === 'ongoing' && 'progress' in event && (
+                {activeTab === 'ongoing' && 'progress' in event && typeof event.progress === 'number' && (
                   <div className="mb-4">
-                    <div className="flex items-center justify-between text-xs text-gray-600 mb-2">
-                      <span>Event Progress</span>
-                      <span className="font-semibold text-teal-600">{(event as any).progress}%</span>
+                    <div className="mb-2 flex items-center justify-between text-xs text-gray-600">
+                      <span>Progress</span>
+                      <span>{event.progress}%</span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: `${(event as any).progress}%` } : { width: 0 }}
-                        transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
-                        className="h-full bg-gradient-to-r from-teal-500 to-teal-600 rounded-full"
+                    <div className="h-2.5 overflow-hidden rounded-full bg-gray-200">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-teal-500 to-yellow-500"
+                        style={{ width: `${event.progress}%` }}
                       />
                     </div>
-                    {/* Days remaining badge */}
-                    {('daysRemaining' in event) && (
-                      <div className="mt-2 inline-flex items-center px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-semibold border border-yellow-200">
-                        <span className="inline-block w-2 h-2 bg-yellow-500 rounded-full mr-2 animate-pulse" />
-                        {(event as any).daysRemaining} {(event as any).daysRemaining === 1 ? 'day' : 'days'} remaining
-                      </div>
-                    )}
                   </div>
                 )}
 
-                <p className="text-gray-600 mb-4 line-clamp-2">
-                  {event.description}
-                </p>
-
-                <div className="flex items-center text-teal-600 font-medium group-hover:gap-3 gap-2 transition-all">
-                  <span>View Event</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <div className="flex items-center justify-between text-sm font-medium text-teal-600">
+                  <span>View details</span>
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
-
-      {/* Background decoration */}
-      <div className="absolute top-20 left-0 w-96 h-96 bg-teal-100 rounded-full blur-3xl opacity-20 -translate-x-1/2" />
-      <div className="absolute bottom-20 right-0 w-96 h-96 bg-yellow-100 rounded-full blur-3xl opacity-20 translate-x-1/2" />
     </section>
   );
 }

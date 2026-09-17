@@ -1,4 +1,3 @@
-
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
@@ -143,17 +142,17 @@ export default function Members() {
     <section
       id="members"
       ref={ref}
-      className="py-32 px-6 bg-white relative overflow-hidden"
+      className="relative overflow-hidden bg-white py-20 px-4 sm:px-6 lg:py-32"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="mb-10 text-center sm:mb-12"
         >
-          <h2 className="text-5xl font-bold text-gray-900 mb-4">Our Community</h2>
-          <p className="text-xl text-gray-600">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-5xl">Our Community</h2>
+          <p className="text-base text-gray-600 sm:text-xl">
             Students passionate about Linux and open source
           </p>
         </motion.div>
@@ -163,12 +162,12 @@ export default function Members() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center mb-16"
+          className="mb-10 flex justify-center sm:mb-16"
         >
-          <div className="inline-flex bg-gray-100 rounded-full p-1.5">
+          <div className="inline-flex flex-wrap justify-center gap-2 rounded-full bg-gray-100 p-1.5">
             <button
               onClick={() => setActiveTab('current')}
-              className={`px-8 py-2.5 rounded-full transition-all duration-300 font-medium ${
+              className={`rounded-full px-4 py-2 text-xs font-medium transition-all duration-300 sm:px-8 sm:py-2.5 sm:text-sm ${
                 activeTab === 'current'
                   ? 'bg-white text-gray-900 shadow-sm'
                   : 'text-gray-600 hover:text-gray-900'
@@ -178,7 +177,7 @@ export default function Members() {
             </button>
             <button
               onClick={() => setActiveTab('past')}
-              className={`px-8 py-2.5 rounded-full transition-all duration-300 font-medium ${
+              className={`rounded-full px-4 py-2 text-xs font-medium transition-all duration-300 sm:px-8 sm:py-2.5 sm:text-sm ${
                 activeTab === 'past'
                   ? 'bg-white text-gray-900 shadow-sm'
                   : 'text-gray-600 hover:text-gray-900'
@@ -191,29 +190,29 @@ export default function Members() {
 
         {/* Current Members Grid */}
         {activeTab === 'current' && (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {currentMembers.map((member, index) => (
               <motion.div
                 key={member.name}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.5, delay: 0.05 * index }}
-                className="bg-white rounded-2xl border border-gray-200 p-5 hover:border-teal-300 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+                className="rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-teal-300 hover:shadow-lg"
               >
-                <div className="w-20 h-20 rounded-full overflow-hidden mb-4 mx-auto ring-2 ring-gray-100">
+                <div className="mx-auto mb-4 h-20 w-20 overflow-hidden rounded-full ring-2 ring-gray-100">
                   <ImageWithFallback
                     src={member.photo}
                     alt={member.name}
-                    className="w-full h-full object-cover"
+                    className="h-full w-full object-cover"
                   />
                 </div>
-                <h3 className="font-semibold text-gray-900 text-center mb-1">
+                <h3 className="mb-1 text-center font-semibold text-gray-900">
                   {member.name}
                 </h3>
-                <p className="text-sm text-teal-600 text-center mb-2">
+                <p className="mb-2 text-center text-sm text-teal-600">
                   {member.year}
                 </p>
-                <p className="text-xs text-gray-600 text-center">
+                <p className="text-center text-xs text-gray-600">
                   {member.interests}
                 </p>
               </motion.div>
@@ -223,29 +222,29 @@ export default function Members() {
 
         {/* Past Members List */}
         {activeTab === 'past' && (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {pastMembers.map((member, index) => (
               <motion.div
                 key={member.name}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.5, delay: 0.05 * index }}
-                className="bg-white rounded-2xl border border-gray-200 p-5 hover:border-teal-300 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+                className="rounded-2xl border border-gray-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-teal-300 hover:shadow-lg"
               >
-                <div className="w-20 h-20 rounded-full overflow-hidden mb-4 mx-auto ring-2 ring-gray-100">
+                <div className="mx-auto mb-4 h-20 w-20 overflow-hidden rounded-full ring-2 ring-gray-100">
                   <ImageWithFallback
                     src={member.photo}
                     alt={member.name}
-                    className="w-full h-full object-cover"
+                    className="h-full w-full object-cover"
                   />
                 </div>
-                <h3 className="font-semibold text-gray-900 text-center mb-1">
+                <h3 className="mb-1 text-center font-semibold text-gray-900">
                   {member.name}
                 </h3>
-                <p className="text-sm text-teal-600 text-center mb-2">
+                <p className="mb-2 text-center text-sm text-teal-600">
                   {member.year}
                 </p>
-                <p className="text-xs text-gray-600 text-center">
+                <p className="text-center text-xs text-gray-600">
                   {member.interests}
                 </p>
               </motion.div>
