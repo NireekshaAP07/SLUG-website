@@ -9,20 +9,48 @@ export default function Footer() {
 
   const [forks, setForks] = useState<any[]>([]);
   const [loadingForks, setLoadingForks] = useState(true);
+  const [forksError, setForksError] = useState<string | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();
+    const CACHE_KEY = 'slug_forks_cache_v1';
+    const CACHE_TTL = 1000 * 60 * 10; // 10 minutes
+
     async function fetchForks() {
       try {
+        // Try cache first
+        const cached = localStorage.getItem(CACHE_KEY);
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (Date.now() - parsed.ts < CACHE_TTL) {
+            setForks(parsed.data || []);
+            setLoadingForks(false);
+            return;
+          }
+        }
+
         const res = await fetch(
-          'https://api.github.com/repos/NireekshaAP07/SLUG-website/forks?per_page=10',
+          'https://api.github.com/repos/NireekshaAP07/SLUG-website/forks?per_page=12',
           { signal: controller.signal }
         );
+
+        if (res.status === 403) {
+          setForksError('Rate limited by GitHub API. Try again later.');
+          setLoadingForks(false);
+          return;
+        }
+
         if (!res.ok) throw new Error('Failed to fetch forks');
         const data = await res.json();
-        setForks(data);
+        setForks(data || []);
+        try {
+          localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), data }));
+        } catch (e) {
+          // ignore storage errors
+        }
       } catch (e) {
         console.error('Error fetching forks', e);
+        setForksError('Unable to load forks');
       } finally {
         setLoadingForks(false);
       }
@@ -38,7 +66,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-6 py-16">
         {/* Main Footer Content */}
-        <div className="mb-12 grid gap-10 lg:grid-cols-3 lg:gap-12">
+        <div className="mb-12 grid grid-cols-1 gap-8 md:grid-cols-3 lg:gap-12">
           {/* Programs Column */}
           <div>
             <motion.div
@@ -47,8 +75,8 @@ export default function Footer() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h4 className="mb-6 text-2xl font-semibold text-white">Programs</h4>
-              <ul className="text-lg text-gray-400 space-y-2">
+              <h4 className="mb-6 text-xl md:text-2xl font-semibold text-white">Programs</h4>
+              <ul className="text-base md:text-lg text-gray-400 space-y-2">
                 <li className="transition-colors hover:text-teal-400">GSoC</li>
                 <li className="transition-colors hover:text-teal-400">GSSoC</li>
                 <li className="transition-colors hover:text-teal-400">SSoC</li>
@@ -64,8 +92,8 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h4 className="mb-6 text-2xl font-semibold text-white">Source Code</h4>
-              <div className="text-lg text-gray-400">
+              <h4 className="mb-6 text-xl md:text-2xl font-semibold text-white">Source Code</h4>
+              <div className="text-base md:text-lg text-gray-400">
                 <a
                   href="https://github.com/NireekshaAP07/SLUG-website"
                   target="_blank"
@@ -74,7 +102,7 @@ export default function Footer() {
                 >
                   View this website on GitHub
                 </a>
-                <p className="text-sm text-gray-400">Anyone can contribute — open issues and submit pull requests.</p>
+                <p className="text-sm md:text-base text-gray-400">Anyone can contribute — open issues and submit pull requests.</p>
               </div>
             </motion.div>
           </div>
@@ -87,11 +115,13 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h4 className="mb-6 text-2xl font-semibold text-white">Forks</h4>
-              <div className="text-lg text-gray-400">
-                <div className="flex flex-wrap items-center gap-2">
+              <h4 className="mb-6 text-xl md:text-2xl font-semibold text-white">Forks</h4>
+              <div className="text-base md:text-lg text-gray-400">
+                <div className="flex w-full gap-2 overflow-x-auto py-1">
                   {loadingForks ? (
                     <span className="text-sm text-gray-500">Loading forks…</span>
+                  ) : forksError ? (
+                    <span className="text-sm text-gray-500">{forksError}</span>
                   ) : forks && forks.length > 0 ? (
                     forks.slice(0, 12).map((f) => (
                       <a
@@ -99,10 +129,11 @@ export default function Footer() {
                         href={f.html_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 rounded bg-gray-800 px-2 py-1 text-sm text-gray-300 transition-colors hover:bg-teal-600 hover:text-white"
+                        aria-label={`Fork by ${f.owner.login}`}
+                        className="flex flex-shrink-0 items-center gap-2 rounded bg-gray-800 px-3 py-2 text-sm text-gray-300 transition-colors hover:bg-teal-600 hover:text-white"
                       >
-                        <img src={f.owner.avatar_url} alt={f.owner.login} className="h-6 w-6 rounded-full" />
-                        <span>{f.owner.login}</span>
+                        <img src={f.owner.avatar_url} alt={f.owner.login} className="h-6 w-6 md:h-8 md:w-8 rounded-full" />
+                        <span className="whitespace-nowrap">{f.owner.login}</span>
                       </a>
                     ))
                   ) : (
