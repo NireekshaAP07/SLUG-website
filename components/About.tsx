@@ -12,14 +12,6 @@ export default function About() {
     'Learning Focused',
   ];
 
-  const collaborators = [
-    { name: 'FSMK', fullName: 'Free Software Movement Karnataka' },
-    { name: 'Ubuntu India', fullName: 'Ubuntu India' },
-  ];
-
-  // Duplicate for seamless loop
-  const duplicatedCollaborators = [...collaborators, ...collaborators, ...collaborators];
-
   return (
     <section
       id="about"
@@ -98,58 +90,6 @@ export default function About() {
                 {tag}
               </motion.div>
             ))}
-          </motion.div>
-
-          {/* Collaborators Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-10 pt-8 border-t border-gray-200"
-          >
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-500 font-medium whitespace-nowrap">Our Collaborators:</span>
-              
-              {/* Infinite Scroll Container */}
-              <div className="relative overflow-hidden flex-1 h-8">
-                <motion.div
-                  animate={{
-                    x: ['0%', '-50%'],
-                  }}
-                  transition={{
-                    duration: 10,
-                    repeat: Infinity,
-                    ease: 'linear',
-                  }}
-                  className="flex gap-4 absolute whitespace-nowrap"
-                >
-                  {duplicatedCollaborators.map((collaborator, index) => (
-                    <div
-                      key={`${collaborator.name}-${index}`}
-                      className="flex items-center h-8"
-                    >
-                      {collaborator.name === 'FSMK' ? (
-                        <div className="flex items-center gap-2 px-3 py-1 bg-teal-50 rounded-full border border-teal-200">
-                          <span className="text-sm font-semibold text-teal-600">FSMK</span>
-                        </div>
-                      ) : (
-                        <div className="flex items-center gap-2 px-3 py-1 bg-orange-50 rounded-full border border-orange-200">
-                          <div className="w-4 h-4 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
-                            <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 text-white" fill="currentColor">
-                              <circle cx="12" cy="12" r="2" />
-                              <circle cx="12" cy="4" r="1.5" />
-                              <circle cx="20" cy="16" r="1.5" />
-                              <circle cx="4" cy="16" r="1.5" />
-                            </svg>
-                          </div>
-                          <span className="text-sm font-semibold text-orange-600">Ubuntu India</span>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </motion.div>
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>

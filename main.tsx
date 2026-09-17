@@ -15,6 +15,8 @@ import CoreTeam from './components/CoreTeam';
 import Members from './components/Members';
 import FOSSFacts from './components/FOSSFacts';
 import GamingArena from './components/GamingArena';
+import Collaborators from './components/Collaborators';
+import SponsorUs from './components/SponsorUs';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
@@ -73,6 +75,8 @@ export default function Component() {
             <Members />
             <FOSSFacts />
             <GamingArena />
+            <Collaborators />
+            <SponsorUs />
             <Contact />
             <Footer />
           </motion.div>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title">
+  <title id="title">FSMK</title>
+  <rect x="10" y="10" width="140" height="140" rx="28" fill="#0F766E"/>
+  <path d="M42 42h49v17H61v13h27v16H61v30H42V42zm58 0h18v30l22-30h-21L99 69l23 49h-21l-15-34-7 9v25H61V42h18v25l21-25z" fill="#fff"/>
+  <path d="M42 128h76" stroke="#FCD34D" stroke-width="7" stroke-linecap="round"/>
+</svg>

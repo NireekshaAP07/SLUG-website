@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title">
+  <title id="title">Ubuntu India</title>
+  <circle cx="80" cy="80" r="68" fill="#E95420"/>
+  <circle cx="80" cy="80" r="29" fill="none" stroke="#fff" stroke-width="13"/>
+  <circle cx="80" cy="29" r="13" fill="#fff"/>
+  <circle cx="124" cy="105" r="13" fill="#fff"/>
+  <circle cx="36" cy="105" r="13" fill="#fff"/>
+</svg>
